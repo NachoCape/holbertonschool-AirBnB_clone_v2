@@ -21,8 +21,8 @@ def HBNB():
 
 @app.route("/c/<text>", strict_slashes=False)
 def text_HBNB(text):
-    """starts a Flask web application and display "C" + "<text>" """
-    return f"C {text}".replace('_', ' ')
+    """starts a Flask web application and display 'C' + '<text>' """
+    return 'C {}'.format(text.replace('_', ' '))
 
 
 if __name__ == "__main__":

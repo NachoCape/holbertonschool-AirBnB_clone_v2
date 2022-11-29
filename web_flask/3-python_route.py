@@ -29,7 +29,7 @@ def text_HBNB(text):
 @app.route("/python/<text>", strict_slashes=False)
 def python_HBNB(text="is cool"):
     """starts a Flask web application and display 'python' + '<text>'"""
-    return "python {}".format(text.replace('_', ' '))
+    return "Python {}".format(text.replace('_', ' '))
 
 
 if __name__ == "__main__":

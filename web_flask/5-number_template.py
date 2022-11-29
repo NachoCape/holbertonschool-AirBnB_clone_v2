@@ -38,10 +38,10 @@ def number_HBNB(n):
     return "{} is a number".format(n)
 
 
-@app.route("/number_template/<int:n>", strict_slashes=False)
-def template_HBNB(n):
+@app.route("/number_template/<int:number>", strict_slashes=False)
+def template_HBNB(number):
     """starts a Flask web application and display a HTML page"""
-    return render_template("5-number.html", name=n)
+    return render_template("5-number.html", number=number)
 
 
 if __name__ == "__main__":

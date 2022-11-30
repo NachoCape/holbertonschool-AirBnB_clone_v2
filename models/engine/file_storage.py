@@ -19,6 +19,7 @@ model = {"BaseModel": BaseModel,
          "Review": Review
          }
 
+
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
@@ -26,14 +27,17 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        if cls != None and self.__objects:
-            retob = {}
-            for key, value in self.__objects.items():
-                classname = (key.split('.'))[0]
-                if classname == cls.__name__:
-                    retob[key] = self.__objects[key]
-            return retob
-        return self.__objects
+        # print(f"---->{cls}<----")
+        # print(f"***>{cls.__name__}<***")
+        if cls:
+            keys = FileStorage.__objects.keys()
+            dicty = {}
+            for key in keys:
+                class_name = key.split('.')[0]
+                if cls.__name__ == class_name:
+                    dicty[key] = FileStorage.__objects[key]
+            return dicty
+        return FileStorage.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -68,7 +72,7 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
 

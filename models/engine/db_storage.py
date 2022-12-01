@@ -48,7 +48,6 @@ class DBStorage:
                     # if '_sa_instance_state' in obj.__dict__:
                     #     del obj.__dict__['_sa_instance_state']
                     ret_dict[str(clss) + '.' + obj.id] = obj
-             
         return ret_dict
 
     def new(self, obj):

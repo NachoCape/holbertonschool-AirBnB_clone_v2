@@ -37,11 +37,16 @@ class DBStorage:
             'State': State, 'City': City, 'Amenity': Amenity,
             'Review': Review
             }
-        for clss in classes.keys():
-            for obj in self.__session.query(classes[clss]).all():
-                # if '_sa_instance_state' in obj.__dict__:
-                #     del obj.__dict__['_sa_instance_state']
-                ret_dict[str(clss) + '.' + obj.id] = obj
+        if cls:
+            for obj in self.__session.query(classes[cls]):
+                ret_dict[str(cls) + '.' + obj.id] = obj
+        else:
+            for clss in classes.keys():
+                for obj in self.__session.query(classes[clss]).all():
+                    # if '_sa_instance_state' in obj.__dict__:
+                    #     del obj.__dict__['_sa_instance_state']
+                    ret_dict[str(clss) + '.' + obj.id] = obj
+             
         return ret_dict
 
     def new(self, obj):

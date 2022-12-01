@@ -37,6 +37,8 @@ class DBStorage:
             'State': State, 'City': City, 'Amenity': Amenity,
             'Review': Review
             }
+        if type(cls) is not str:
+            cls = cls.__name__
         if cls:
             for obj in self.__session.query(classes[cls]):
                 ret_dict[str(cls) + '.' + obj.id] = obj

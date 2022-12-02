@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        {% for s in stt|sort(attribute='name') if s.id == id %}
+            {% set flag = 1 %}
+            <H1>States:</H1>
+            <H3>Cities:</H3>
+            <UL>
+                {% for c in s.cities|sort(attribute='name') %}
+                    {% if s.id == c.state_id %}
+                        <LI>City: {{ c.id }}: <B>{{ c.name }}</B></LI>
+                    {% endif %}
+                {% endfor %}
+            </UL>
+        {% endfor %}
+        {% if flag == 0 %}
+            <H1>Not found!</H1>
+        {% endif %}
+    </BODY>
+</HTML>
